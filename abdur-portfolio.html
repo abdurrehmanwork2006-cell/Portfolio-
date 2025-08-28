@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdur Rehman - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .text-gradient {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particle-float 6s ease-in-out infinite;
+        }
+        
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.7; }
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 8px;
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-x-hidden">
+    <!-- Animated Background Particles -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Header -->
+    <header class="fixed top-0 w-full glass z-50 border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#home" class="text-2xl font-bold text-gradient floating">Abdur Rehman</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white/80 hover:text-white transition-all duration-300 hover:scale-110">Home</a>
+                    <a href="#about" class="text-white/80 hover:text-white transition-all duration-300 hover:scale-110">About</a>
+                    <a href="#projects" class="text-white/80 hover:text-white transition-all duration-300 hover:scale-110">Projects</a>
+                    <a href="#skills" class="text-white/80 hover:text-white transition-all duration-300 hover:scale-110">Skills</a>
+                    <a href="#contact" class="text-white/80 hover:text-white transition-all duration-300 hover:scale-110">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-24 md:pt-32">
+        <div class="text-center z-10">
+            <div class="mb-8">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+                    Hi, I'm <span class="text-gradient floating">Abdur Rehman</span>
+                </h1>
+                <div class="h-24 md:h-32 flex items-center justify-center mb-8">
+                    <h2 class="text-3xl md:text-5xl lg:text-6xl font-semibold text-white/90">
+                        I'm a <span id="rotating-text" class="text-gradient">Full Stack Developer</span>
+                    </h2>
+                </div>
+            </div>
+            
+            <p class="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed">
+                Passionate about creating innovative digital solutions and building the future of web technology. 
+                Specializing in modern frameworks and cutting-edge development practices.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <button class="gradient-bg hover:scale-110 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 glow">
+                    View My Work
+                </button>
+                <button class="border-2 border-white/30 hover:border-white text-white hover:bg-white/10 font-bold py-4 px-8 rounded-full transition-all duration-300">
+                    Download Resume
+                </button>
+            </div>
+            
+            <!-- Animated Scroll Indicator -->
+            <div class="animate-bounce">
+                <div class="w-6 h-10 border-2 border-white/50 rounded-full mx-auto flex justify-center">
+                    <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+                </div>
+                <p class="text-white/60 mt-2">Scroll to explore</p>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-20 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 floating"></div>
+        <div class="absolute bottom-20 right-20 w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-20 floating" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-10 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 floating" style="animation-delay: 2s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    About <span class="text-gradient">Me</span>
+                </h2>
+                <div class="w-32 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="relative">
+                        <div class="w-80 h-80 mx-auto lg:mx-0 gradient-bg rounded-full p-2 floating">
+                            <div class="w-full h-full bg-gray-800 rounded-full flex items-center justify-center">
+                                <span class="text-4xl font-bold text-white">AR</span>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-28 h-28 bg-yellow-400 rounded-full flex items-center justify-center floating" style="animation-delay: 1s;">
+                            <span class="text-3xl">🚀</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-2xl font-bold mb-6">Personal Information</h3>
+                        <div class="space-y-3 text-white/80">
+                            <p><strong class="text-gradient">Name:</strong> Abdur Rehman</p>
+                            <p><strong class="text-gradient">Age:</strong> 25 Years</p>
+                            <p><strong class="text-gradient">Location:</strong> Pakistan</p>
+                            <p><strong class="text-gradient">Email:</strong> abdur.rehman@example.com</p>
+                            <p><strong class="text-gradient">Phone:</strong> +92 300 123 4567</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8">Experience</h3>
+                        <div class="space-y-8">
+                            <div class="border-l-4 border-gradient-to-b from-blue-400 to-purple-400 pl-6 card-3d">
+                                <div class="text-sm text-gradient font-medium">2023 - Present</div>
+                                <h4 class="text-xl font-bold">Senior Full Stack Developer</h4>
+                                <div class="text-gradient font-medium">Tech Solutions Inc</div>
+                                <p class="text-white/70 mt-2">Leading development of enterprise applications using React, Node.js, and cloud technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-black/20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    My <span class="text-gradient">Projects</span>
+                </h2>
+                <div class="w-32 h-1 gradient-bg mx-auto rounded-full mb-8"></div>
+                <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                    Showcasing innovative projects that demonstrate my expertise in modern web development and design.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass rounded-2xl p-6 card-3d hover:scale-105 transition-all duration-500">
+                    <div class="h-48 gradient-bg rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-2xl">💻</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">E-Commerce Platform</h3>
+                    <p class="text-white/70 mb-6">Advanced e-commerce solution with React, Node.js, and MongoDB.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm rounded-full">React</span>
+                        <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-blue-500 text-white text-sm rounded-full">Node.js</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="flex-1 gradient-bg text-white py-2 px-4 rounded-lg hover:scale-105 transition-all duration-300">Live Demo</button>
+                        <button class="flex-1 border border-white/30 text-white py-2 px-4 rounded-lg hover:bg-white/10 transition-all duration-300">GitHub</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Skills & <span class="text-gradient">Expertise</span>
+                </h2>
+                <div class="w-32 h-1 gradient-bg mx-auto rounded-full mb-8"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Technical Skills</h3>
+                    <div class="space-y-8">
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-medium text-gradient">Frontend Development</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-medium">React.js</span>
+                                        <span class="text-gradient font-bold">95%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-3">
+                                        <div class="skill-bar rounded-full h-3" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Soft Skills</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass p-6 rounded-xl text-center hover:scale-105 transition-all duration-300">
+                            <div class="text-4xl mb-3">🧩</div>
+                            <h4 class="font-bold">Problem Solving</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black/20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Get In <span class="text-gradient">Touch</span>
+                </h2>
+                <div class="w-32 h-1 gradient-bg mx-auto rounded-full mb-8"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="text-3xl">📧</div>
+                                <div>
+                                    <h4 class="text-lg font-bold">Email</h4>
+                                    <a href="mailto:abdur.rehman@example.com" class="text-gradient hover:scale-110 transition-all duration-300">abdur.rehman@example.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-8">Send Message</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Name *</label>
+                                <input type="text" class="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:outline-none focus:border-gradient-to-r focus:from-blue-400 focus:to-purple-400 transition-all duration-300" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email *</label>
+                                <input type="email" class="w-full px-4 py-3 glass border border-white/20 rounded-lg focus:outline-none focus:border-gradient-to-r focus:from-blue-400 focus:to-purple-400 transition-all duration-300" placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full gradient-bg text-white font-bold py-4 px-6 rounded-lg hover:scale-105 transition-all duration-300 glow">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 py-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <h3 class="text-3xl font-bold text-gradient mb-4">Abdur Rehman</h3>
+                <p class="text-white/60 max-w-md mx-auto">
+                    Creating digital experiences that inspire, engage, and deliver results. 
+                    Let's build something amazing together.
+                </p>
+            </div>
+            <div class="border-t border-white/20 pt-8">
+                <p class="text-white/40">© 2024 Abdur Rehman. All rights reserved. | Built with ❤️ using modern web technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Hero animations
+        gsap.from("#home h1", {duration: 1.5, y: 100, opacity: 0, ease: "power3.out"});
+        gsap.from("#home h2", {duration: 1.5, y: 100, opacity: 0, ease: "power3.out", delay: 0.3});
+        gsap.from("#home p", {duration: 1.5, y: 100, opacity: 0, ease: "power3.out", delay: 0.6});
+        gsap.from("#home button", {duration: 1, y: 50, opacity: 0, ease: "power3.out", delay: 0.9, stagger: 0.2});
+        
+        // Scroll animations
+        gsap.utils.toArray("section").forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+        
+        // Skill bars animation
+        gsap.utils.toArray(".skill-bar").forEach(bar => {
+            gsap.from(bar, {
+                scrollTrigger: {
+                    trigger: bar,
+                    start: "top 80%"
+                },
+                width: 0,
+                duration: 2,
+                ease: "power3.out"
+            });
+        });
+        
+        // Text rotation
+        const texts = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Innovation Enthusiast'];
+        let currentText = 0;
+        const heroText = document.getElementById('rotating-text');
+        
+        setInterval(() => {
+            currentText = (currentText + 1) % texts.length;
+            if (heroText) {
+                gsap.to(heroText, {opacity: 0, y: -20, duration: 0.5, ease: "power2.out", onComplete: () => {
+                    heroText.textContent = texts[currentText];
+                    gsap.to(heroText, {opacity: 1, y: 0, duration: 0.5, ease: "power2.out"});
+                }});
+            }
+        }, 3000);
+        
+        // Particle system
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.width = Math.random() * 4 + 2 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+        
+        setInterval(createParticle, 300);
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {duration: 1, scrollTo: {y: target, offsetY: 80}, ease: "power3.out"});
+                }
+            });
+        });
+        
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating');
+            parallax.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
